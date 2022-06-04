@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 col-md-4" *ngFor="let flight of flights">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="label"
+              >from: <b>{{ flight.from }} </b></span
+            >
+            <b>---></b>
+            <span class="label"
+              >To: <b>{{ flight.to }}</b></span
+            >
+          </div>
+          <div>
+            <span class="label">Sttart Date :</span>
+            <b>{{ flight.startDate | date: "MM/dd/yy" }}</b>
+          </div>
+          <div>
+            <span class="label">End Date :</span>
+            <b>{{ flight.endDate | date: "MM/dd/yy" }}</b>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="label"
+              >price: <b>{{ flight.price }}$</b></span
+            ><span class="label"
+              >sets: <b>{{ flight.sets }}</b></span
+            >
+          </div>
+          <div class="d-flex justify-content-center">
+            <span class="label"
+              >Flight Number: <b>{{ flight.fightNum }}</b></span
+            >
+          </div>
+          <div class="div mt-2" *ngIf="this.global.isAdmin">
+            <div class="d-flex justify-content-between">
+              <div class="btn btn-danger" (click)="deleteFlight(flight._id)">
+                Delete
+              </div>
+              <button class="btn btn-primary" (click)="openPopup(flight._id)">
+                Edit
+              </button>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-stretch mt-3"
+            *ngIf="!this.global.isAdmin"
+          >
+            <div class="btn btn-primary w-100" (click)="bookTiket(flight._id)">
+              Book ticket NOW
+            </div>
+          </div>
+
+          <!-- how to know days -->
+          <!--           <p>days {{ +flight.startDate - +flight.endDate }}</p>
+ -->
+        </div>
+      </div>
+
+      <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{ display: displayStyle }"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Ticket</h4>
+            </div>
+            <div class="modal-body">
+              <form
+                class="form"
+                #editFlight="ngForm"
+                (ngSubmit)="handelSubmit(editFlight)"
+              >
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="to"
+                    [(ngModel)]="flightModel.to"
+                    name="to"
+                    #to="ngModel"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="editFlight.submitted && to.invalid"
+                  >
+                    place you gone is requird
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="text-white fw-bolder mb-2"
+                    >edit start date for fight</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    placeholder="start Date"
+                    [(ngModel)]="flightModel.startDate"
+                    name="startDate"
+                    #startDate="ngModel"
+                    Date
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="editFlight.submitted && startDate.invalid"
+                  >
+                    start data is required
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="text-white fw-bolder mb-2"
+                    >edit end date for fight</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    placeholder="end Date"
+                    [(ngModel)]="flightModel.endDate"
+                    name="endDate"
+                    #endDate="ngModel"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="editFlight.submitted && startDate.invalid"
+                  >
+                    end data is required
+                  </div>
+                </div>
+                <div class="mb-3 d-flex flex-row justify-content-around">
+                  <label class="text-white fw-bolder mb-2"
+                    >edit Fight Price::</label
+                  >
+                  <div class="mb-3">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="price"
+                      [(ngModel)]="flightModel.price"
+                      name="price"
+                      #price="ngModel"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="editFlight.submitted && price.invalid"
+                    >
+                      price is required
+                    </div>
+                  </div>
+                  <label class="text-white fw-bolder mb-2"
+                    >Enter Fight sets::</label
+                  >
+                  <div class="mb-3">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="sets"
+                      [(ngModel)]="flightModel.sets"
+                      name="sets"
+                      #sets="ngModel"
+                    />
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="editFlight.submitted && sets.invalid"
+                    >
+                      sets is required
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <button class="btn btn-primary form-control">
+                    Save edit
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="closePopup()"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

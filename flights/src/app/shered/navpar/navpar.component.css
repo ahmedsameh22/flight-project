@@ -1,0 +1,11 @@
+.cus {
+  position: absolute;
+  width: 442px;
+  height: 306px;
+  right: 216px;
+  top: 41px;
+}
+.showChoose {
+  position: relative;
+  z-index: 5;
+}

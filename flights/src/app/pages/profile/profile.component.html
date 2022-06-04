@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="alert alert-danger" *ngIf="authration">pleass login firsist</div>
+  <aside class="profile-card d-flex" *ngIf="!authration">
+    <header>
+      <!-- here’s the avatar -->
+      <h1>{{ userInfo.name | uppercase }}</h1>
+      <img src="{{ imageProfile }}" height="110px" width="120px" alt="no" />
+
+      <div>
+        <form #uploadImg="ngForm" (ngSubmit)="handelSubmit()">
+          <input
+            type="file"
+            class="form-control"
+            (change)="handelChange($event)"
+          />
+          <button class="btn btn-danger">Upload image</button>
+        </form>
+      </div>
+
+      <!-- the username -->
+      <!-- and role or location -->
+    </header>
+    <section>
+      <div>
+        <span>Id :</span>
+        <h2>{{ userInfo._id }}</h2>
+      </div>
+      <div>
+        <span>Email :</span>
+        <h2>{{ userInfo.email }}</h2>
+      </div>
+      <div>
+        <span>phone :</span>
+        <h2>{{ userInfo.phone }}</h2>
+      </div>
+      <div>
+        <span>gender :</span>
+        <h2>{{ userInfo.gender }}</h2>
+      </div>
+      <div>
+        <div
+          class="btn btn-primary mt-2 ms-5"
+          *ngIf="userInfo.flightId"
+          (click)="openModal(userInfo.flightId)"
+        >
+          show Tickt
+        </div>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: display }"
+  *ngIf="ticketInfo"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ticket</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="onCloseHandled()"
+        >
+          <span aria-hidden="true">close </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 aria-hidden="true">From: {{ ticketInfo.from }}</h3>
+        <h3 aria-hidden="true">To=>: {{ ticketInfo.to }}</h3>
+        <h3 aria-hidden="true">
+          Start Date: {{ ticketInfo.startDate | date: "MM/dd/yy" }}
+        </h3>
+        <h3 aria-hidden="true">
+          Place From: {{ ticketInfo.endDate | date: "MM/dd/yy" }}
+        </h3>
+        <h3 aria-hidden="true">flight Number: {{ ticketInfo.fightNum }}</h3>
+        <h2>flight ID: {{ ticketInfo._id }}</h2>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="onCloseHandled()">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Print</button>
+      </div>
+    </div>
+  </div>
+</div>

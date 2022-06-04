@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-primary" href="">Airplane</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="flights">show travels</a>
+        </li>
+        <li class="nav-item" *ngIf="!this.global.isAdmin">
+          <a class="nav-link" href="/profile">profile</a>
+        </li>
+      </ul>
+      <button
+        class="btn btn-outline-primary me-2"
+        *ngIf="!this.global.islogin && !this.global.isAdmin"
+        type="submit"
+        [routerLink]="['/login', 'user']"
+      >
+        login</button
+      ><button
+        class="btn btn-outline-primary me-2"
+        *ngIf="this.global.islogin || this.global.isAdmin"
+        type="submit"
+        (click)="handellogout()"
+      >
+        logout
+      </button>
+      <button
+        *ngIf="!this.global.islogin && !this.global.isAdmin"
+        class="btn btn-outline-primary"
+        type="submit"
+        routerLink="register"
+      >
+        register now</button
+      ><button
+        *ngIf="this.global.isAdmin"
+        class="btn btn-outline-primary"
+        type="submit"
+        routerLink="/admin"
+      >
+        Admin Panal
+      </button>
+    </div>
+  </div>
+</nav>

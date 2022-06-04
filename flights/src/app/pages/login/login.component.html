@@ -1,0 +1,56 @@
+<div class="container-box">
+  <div class="screen">
+    <div class="screen__content">
+      <form class="login" (ngSubmit)="onClickSubmit()" [formGroup]="loginFrom">
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <input
+            type="email"
+            class="login__input"
+            placeholder="Email"
+            formControlName="email"
+            required
+          />
+          <div
+            class="alert alert-danger mt-2"
+            *ngIf="loganVal?.['email']?.errors?.['required']&&loganVal?.['email']?.touched"
+          >
+            <div>email require</div>
+            <div *ngIf="loganVal?.['email']?.errors?.['email']">
+              invaild email
+            </div>
+          </div>
+        </div>
+        <div class="login__field">
+          <input
+            type="password"
+            class="login__input"
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+          <div
+            class="alert alert-danger mt-2"
+            *ngIf="loganVal?.['password']?.errors?.['required'] &&loganVal?.['password']?.touched"
+          >
+            <div>password require</div>
+          </div>
+        </div>
+        <button
+          class="btn btn-primary text-center ms-5"
+          [disabled]="!loginFrom.valid"
+        >
+          <span class="button__text p-2">Log In </span>
+
+          <i class="button__icon fas fa-chevron-right"></i>
+        </button>
+      </form>
+    </div>
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>
+  </div>
+</div>

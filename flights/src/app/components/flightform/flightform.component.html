@@ -1,0 +1,116 @@
+<section>
+  <div class="container pt-5">
+    <h3 class="alert alert-danger text-center text-danger">
+      This form just for Admin
+    </h3>
+    <form class="form" #addFlight="ngForm" (ngSubmit)="handelSubmit(addFlight)">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="from"
+          placeholder="form Egypt"
+          value="Egypt"
+          readonly
+          disabled
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="to"
+          [(ngModel)]="flightModel.to"
+          name="to"
+          #to="ngModel"
+          required
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="addFlight.submitted && to.invalid"
+        >
+          place you gone is requird
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="text-white fw-bolder mb-2">start date for fight</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="start Date"
+          [(ngModel)]="flightModel.startDate"
+          name="startDate"
+          #startDate="ngModel"
+          required
+          Date
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="addFlight.submitted && startDate.invalid"
+        >
+          start data is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="text-white fw-bolder mb-2">end date for fight</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="end Date"
+          [(ngModel)]="flightModel.endDate"
+          name="endDate"
+          #endDate="ngModel"
+          required
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="addFlight.submitted && startDate.invalid"
+        >
+          end data is required
+        </div>
+      </div>
+      <div class="mb-3 d-flex flex-row justify-content-around">
+        <label class="text-white fw-bolder mb-2">Enter Fight Price::</label>
+        <div class="mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="price"
+            [(ngModel)]="flightModel.price"
+            name="price"
+            #price="ngModel"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="addFlight.submitted && price.invalid"
+          >
+            price is required
+          </div>
+        </div>
+        <label class="text-white fw-bolder mb-2">Enter Fight sets::</label>
+        <div class="mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="sets"
+            [(ngModel)]="flightModel.sets"
+            name="sets"
+            #sets="ngModel"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="addFlight.submitted && sets.invalid"
+          >
+            sets is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <button class="btn btn-primary form-control">Add Flight</button>
+      </div>
+    </form>
+  </div>
+</section>

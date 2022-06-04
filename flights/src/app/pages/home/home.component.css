@@ -1,0 +1,74 @@
+body {
+  box-sizing: border-box;
+}
+
+.main .main-txt {
+  width: 500px;
+}
+.main .main-btn {
+  background-color: #595968;
+  width: 201px;
+  height: 50px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #0d0d68;
+  box-shadow: 0 0 19px 1px black;
+}
+.main {
+  background: url(../../../assets/image/airplane.jpg);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+.links {
+  margin: auto;
+}
+.links li {
+  margin: 0 5px;
+  font-size: 22px;
+  font-family: cursive;
+  font-weight: 800;
+  border-radius: 20px;
+  color: #4f6fc6;
+  padding: 5px;
+  box-shadow: 0 0 10px 1px #d8d8d8;
+  width: 137px;
+  text-align: center;
+  background: black;
+}
+.links li a:hover {
+  color: blue;
+}
+.main .maincard {
+  background-color: white;
+  padding: 20px;
+  border-right: 1px solid black;
+  margin-top: 30px;
+  width: 220px;
+  text-align: center;
+}
+
+.main .cards div:last-child {
+  background-color: #c81414;
+  border-right: none;
+  padding-top: 40px;
+}
+.main #line {
+  background-color: #5959686e;
+  width: 167px;
+  height: 1px;
+  margin: 22px 8px;
+}
+section {
+  height: calc(100vh - 57px);
+  background-color: rgb(198 202 202);
+}
+.form {
+  background-color: #4f6fc6;
+  height: 500px;
+  border-radius: 50px;
+  padding: 45px;
+  width: 87%;
+  margin: auto;
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <div *ngIf="!global.isAdmin; else adminControl">
+    <div class="alert alert-danger">
+      login first
+      <h3 class="btn btn-danger" routerLink="/login/admin">login</h3>
+    </div>
+  </div>
+  <ng-template #adminControl>
+    <div class="row mt-4">
+      <div class="col-8 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="btn btn-primary" routerLink="/flights">Show Fights</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="btn btn-primary" routerLink="/users">Show AllUSer</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="btn btn-primary" routerLink="/addflight">
+              Add Flights
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
