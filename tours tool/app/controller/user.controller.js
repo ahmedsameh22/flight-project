@@ -72,7 +72,7 @@ class User {
       res.status(200).send({
         AppReq: true,
         data: user,
-        message: "user Data deleted ",
+        message: "user Data  ",
       });
     } catch (e) {
       res.status(500).send({
@@ -123,6 +123,22 @@ class User {
       });
     }
   };
+  static reqFlight = async (req, res) => {
+    try {
+      console.log("ss");
+      req.user.requested = req.body;
+      await req.user.save();
+      res.status(200).send({
+        apiReq: true,
+        data: req.user,
+      });
+    } catch (e) {
+      res.status(500).send({
+        apiReq: false,
+        error: e.message,
+      });
+    }
+  };
   static logOut = async (req, res) => {
     try {
       req.user.tokens = req.user.tokens.filter((singleToken) => {
@@ -142,22 +158,7 @@ class User {
       });
     }
   };
-  static reqFlight = async (req, res) => {
-    try {
-      const user = req.user;
-      res.status(200).send({
-        AppReq: true,
-        data: user,
-        message: "user Data deleted ",
-      });
-    } catch (e) {
-      res.status(500).send({
-        AppReq: false,
-        Error: e,
-        message: "error delte data",
-      });
-    }
-  };
+
   static uploadImg = async (req, res) => {
     try {
       const ext = path.extname(req.file.originalname).toLocaleLowerCase();

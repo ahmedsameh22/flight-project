@@ -58,6 +58,22 @@ const userSchame = mongoose.Schema(
         },
       },
     ],
+    requested: {
+      days: {
+        type: Number,
+        required: true,
+      },
+      to: {
+        type: String,
+        trim: true,
+        required: true,
+      },
+      startDate: {
+        type: Date,
+        required: true,
+      },
+    },
+
     flightId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Flight",

@@ -1,0 +1,80 @@
+<section>
+  <div class="container pt-5">
+    <div class="alert alert-primary">
+      <h2 class="text-center text-primary">Requsted Custome Flight</h2>
+    </div>
+    <form class="form" #request="ngForm" (ngSubmit)="handelSubmit(request)">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="from"
+          placeholder="form Egypt"
+          value="Egypt"
+          readonly
+          disabled
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="to"
+          [(ngModel)]="reqModel.to"
+          name="to"
+          #to="ngModel"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="request.submitted && to.invalid">
+          place you gone is requird
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="text-white fw-bolder mb-2">start date for fight</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="start Date"
+          [(ngModel)]="reqModel.startDate"
+          name="startDate"
+          #startDate="ngModel"
+          required
+          Date
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="request.submitted && startDate.invalid"
+        >
+          start data is required
+        </div>
+      </div>
+
+      <div class="mb-3 d-flex flex-row justify-content-center">
+        <label class="text-black-50 fw-bolder mt-2">Enter Fight days: </label>
+        <div class="mb-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="days"
+            [(ngModel)]="reqModel.days"
+            name="days"
+            #days="ngModel"
+            required
+          />
+        </div>
+        <div
+          class="alert alert-danger ms-2"
+          *ngIf="request.submitted && days.invalid"
+        >
+          days is requird
+        </div>
+      </div>
+      <div class="mb-4">
+        <button class="btn btn-primary form-control">
+          send Requsted Flight
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

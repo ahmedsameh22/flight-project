@@ -22,7 +22,61 @@
           <td>{{ user.gender }}</td>
           <td>
             <a class="btn btn-danger" (click)="deleteUser(user._id)"> Delete</a>
+            <a
+              class="btn btn-info ms-3"
+              *ngIf="user.requested"
+              (click)="openModal(user.requested)"
+            >
+              requseted</a
+            >
           </td>
+          <div
+            class="modal"
+            tabindex="-1"
+            role="dialog"
+            *ngIf="user.requested"
+            [ngStyle]="{ display: display }"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title text-black-50">Requseted</h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="onCloseHandled()"
+                  >
+                    <span aria-hidden="true">close </span>
+                  </button>
+                </div>
+                <div class="modal-body bg-primary">
+                  <h4>
+                    <span class="text-black-50">To: </span
+                    >{{ user.requested.to }}
+                  </h4>
+                  <h4>
+                    <span class="text-black-50">Start Date: </span
+                    >{{ user.requested.startDate | date: "MM/dd/yy" }}
+                  </h4>
+                  <h4>
+                    <span class="text-black-50">Days: </span
+                    >{{ user.requested.days }}
+                  </h4>
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="onCloseHandled()"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </tr>
       </tbody>
     </table>

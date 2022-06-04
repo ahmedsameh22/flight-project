@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UsersComponent } from './pages/users/users.component';
 import { FlightformComponent } from './components/flightform/flightform.component';
+import { RequestetformComponent } from './components/requestetform/requestetform.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FlightformComponent } from './components/flightform/flightform.componen
     AdminComponent,
     UsersComponent,
     FlightformComponent,
+    RequestetformComponent,
   ],
   imports: [
     BrowserModule,

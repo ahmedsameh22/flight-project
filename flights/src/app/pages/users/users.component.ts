@@ -9,6 +9,7 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class UsersComponent implements OnInit {
   usersData: any = [];
+  display = 'none';
 
   constructor(private global: GlobalService, private toster: ToastrService) {
     this.allUser();
@@ -35,5 +36,11 @@ export class UsersComponent implements OnInit {
         console.log(err.error.message);
       }
     );
+  }
+  openModal(id: any) {
+    this.display = 'block';
+  }
+  onCloseHandled() {
+    this.display = 'none';
   }
 }

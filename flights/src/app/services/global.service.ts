@@ -47,8 +47,10 @@ export class GlobalService {
   showFlight(id: any): Observable<any> {
     return this.http.get(`http://localhost:3000/flight/showticket/${id}`);
   }
-  editFlight(obj: any , id:any): Observable<any> {
+  editFlight(obj: any, id: any): Observable<any> {
     return this.http.post(`http://localhost:3000/flight/edit/${id}`, obj);
   }
-
+  reqFlight(obj: any): Observable<any> {
+    return this.http.post('http://localhost:3000/user/reqflight', obj);
+  }
 }
